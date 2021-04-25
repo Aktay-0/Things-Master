@@ -33,7 +33,7 @@ server {
     #     root /var/repos/thigs-master/Things-Master/gsm_manager;
     #}
 
-    location /media/ {
+    location /media {
          access_log off;
          log_not_found off;
          #alias /var/repos/thigs-master/Things-Master/gsm_manager/media;
@@ -41,11 +41,10 @@ server {
     }
     
 
-     location /static/ {
+     location /static {
          access_log off;
          log_not_found off;
-         #alias /var/repos/thigs-master/Things-Master/gsm_manager/staticfiles;
-         root /var/repos/thigs-master/Things-Master/gsm_manager;
+         alias /var/repos/thigs-master/Things-Master/gsm_manager/staticfiles;
     }
 
     # location ~ /\. {
