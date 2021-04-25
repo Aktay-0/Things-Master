@@ -1,0 +1,13 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+<div class="login-block">
+    <h1>Профиль</h1>
+    <form action="." method="POST" class="login-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="profile-btn">Сохранить</button>
+        <br><br>
+        <div class="reg-log-info"><a href="/">Назад</a></div>
+    </form>
+</div>
+{% endblock %}

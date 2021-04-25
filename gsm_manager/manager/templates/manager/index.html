@@ -1,0 +1,12 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+<div class="main-menu"><div><a href="/profile">Профиль</a></div><div><a href="/device-register">Регистрация устройства</a></div><div><a href="/logout">Выйти</a></div></div>
+<div class="device-list">
+{% for device in devices %}
+<div class="device-box">
+<div class="device-icon"><div class="device-title"><div><a href="/device?serial={{ device.serial_number }}">{{ device.name }}({{ device.serial_number }})</a></div></div></div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

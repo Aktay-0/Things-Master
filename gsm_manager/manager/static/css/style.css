@@ -1,0 +1,197 @@
+.login-block {
+    margin-top: 20px;
+    margin-left: 40%;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    min-height: 100vh;
+    background-image: url('../images/site-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    padding-top: 0.1px;
+    height: 100vh;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: absolute;
+    justify-content: space-around;
+    width: 98%;
+    margin-left: 15px;
+    margin-top: 5px;
+    background-color: aqua;
+    background-image: url('../images/menu-background.jpg');
+    background-position:center center;
+    background-size: 100%;
+    border-radius: 20px;
+}
+
+.main-menu div {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: darkslategray;
+    background-size: 100%;
+    border-radius: 5px;
+}
+
+.main-menu div a {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-btn {
+    margin-left: 16vh;
+}
+
+.dev-btn {
+    margin-left: 15vh;
+}
+
+.conf-btn {
+    margin-left: 10vh;
+}
+
+.reg-btn {
+    margin-left: 15vh;
+}
+
+.profile-btn {
+    margin-left: 15vh;
+}
+
+.device-box {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+.device-icon {
+    width: auto;
+    height: 150px;
+    background-image: url('../images/device-icon.png');
+    background-position:center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: greenyellow;
+    border-radius: 5px;
+}
+
+.device-title {
+    padding-top: 60px;
+}
+
+.device-title div {
+    background-color: lightslategray;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.device-title a {
+    font-size: 18px;
+    font-weight: bold;
+    color:whitesmoke;
+    text-align: center;
+    min-height: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.device-list {
+    margin-top: 60px;
+}
+
+.register-block {
+    margin-top: 20px;
+    margin-left: 40%;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+.register-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-block h1 {
+    text-align: center;
+}
+
+.register-block p input {
+    margin: 3px;
+}
+
+.register-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.reg-log-info {
+    text-align: center;
+}
+
+.reg-log-info a {
+    color: blue;
+}
+
+.login-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.login-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-block h1 {
+    text-align: center;
+}
+
+.login-block p input {
+    margin: 3px;
+}
+
+.block-device {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.block-device .login-block{
+    margin-left: 0;
+}

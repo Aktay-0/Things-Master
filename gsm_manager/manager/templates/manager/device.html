@@ -1,0 +1,24 @@
+{% extends 'manager/base.html' %}
+
+{% block content %}
+<div class="block-device">
+<div class="login-block">
+<h1>{{ device.serial_number }}</h1>
+<form action="." method="POST" class="login-form">{% csrf_token %}
+    <input type="hidden" name="serial" value="{{ device.serial_number }}">
+    {{ form.as_p }}
+    <button type="submit" class="dev-btn">Сохранить</button>
+    <br><br>
+    <div class="reg-log-info"><a href="/">Назад</a></div>
+</form>
+</div>
+<div class="login-block">
+<h1>Конфигурация</h1>
+<form action="/save_config/" method="POST" class="login-form">{% csrf_token %}
+    <input type="hidden" name="serial" value="{{ device.serial_number }}">
+    {{ form_config.as_p }}
+    <button type="submit" class="conf-btn">Обновить конфигурацию</button>
+</form>
+</div>
+</div>
+{% endblock %}
