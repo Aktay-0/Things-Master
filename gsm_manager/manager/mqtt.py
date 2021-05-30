@@ -1,6 +1,7 @@
 import paho.mqtt.client as mqtt
 from django.conf import settings
 from .smsc_api import *
+from .functional import set_log, set_config
 
 smsc = SMSC()
 
@@ -15,12 +16,10 @@ def on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
     if (msg.topic == 'device/alarm'):
-        from .views import set_log
         set_log(msg)
         r = smsc.send_sms(settings.SEND_PHONE, "Warning!", sender='SMSC.RU')
         print(r)
     elif (msg.topic == 'device/config'):
-        from .views import set_config
         set_config(msg)
 
 

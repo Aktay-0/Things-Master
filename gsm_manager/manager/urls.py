@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .mqtt import client
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -12,3 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('save_config/', views.save_config, name='save_config'),
 ]
+
+client.loop_start()
