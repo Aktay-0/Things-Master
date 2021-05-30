@@ -6,22 +6,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
 from django.contrib.auth import logout
-#from .iotc import *
-import requests
-import json
+from . import mqtt
+import time
 
 # Create your views here.
 
-def get_config():
-    r = requests.get('https://demo.thingsboard.io/api/v1/arhQWlUJPVvHxxzmQZK3/attributes?sharedKeys=i_phone,i_alarmTime,i_active,i_smsText,i_id,i_name')
-    data = json.loads(r.text)['shared']
-    conf = {"phone": data['i_phone'], "alarmTime": data['i_alarmTime'], "active": data['i_active'], "smsText": data['i_smsText'], "id": data['i_id'], "name": data['i_name']}
+def get_config(data):
+    conf = {}
+    dt = data.split(',')
+    for i in dt:
+        bf = i.split('|')
+        conf[bf[1]] = bf[2]
     return conf
-
-def save_config_device(conf):
-    url = 'https://demo.thingsboard.io/api/v1/arhQWlUJPVvHxxzmQZK3/telemetry'
-    requests.post(url, json=conf)
-    requests.post(url, json={'update': True})      
 
 def auth(operation):
     def check_auth(request):
@@ -107,9 +103,11 @@ def device(request):
     serial = request.GET['serial']
     device = Device.objects.get(serial_number=serial)
     form = DeviceEditForm({'name': device.name, 'description': device.description})
-    config = get_config()
+    config = device.config
+    config = get_config(config)
     form_config = DeviceConfigForm(config)
-    return render(request, 'manager/device.html', { 'title': 'Device', 'device': device, 'form': form, 'config': config, 'form_config': form_config})
+    logs = DeviceLog.objects.filter(device=device).order_by('-date')
+    return render(request, 'manager/device.html', { 'title': 'Device', 'device': device, 'form': form, 'logs': logs, 'form_config': form_config})
 
 @auth
 def device_register(request):
@@ -157,11 +155,33 @@ def profile(request):
 def save_config(request):
     if request.method == 'POST':
         serial = request.POST['serial']
-        act = 'false'
-        if request.POST.get('active') == 'on':
-            act = 'true'       
-        conf = {"active": act, "alarmTime": request.POST['alarmTime'], "id": request.POST['id'], "phone": request.POST['phone'], "smsText": request.POST['smsText'], "name": request.POST['name']}
-        save_config_device(conf)
-        return redirect('/device?serial=' + serial)
+        form = DeviceConfigForm(request.POST)
+        if form.is_valid():
+            data = serial + ';'
+            conf = form.cleaned_data
+            for i in conf:
+                data += 'type|' + i + '|' + str(conf[i]) + ','
+            data = data[:-1]
+            #device = Device.objects.get(serial_number=serial)
+            #device.config = data
+            #device.save() 
+            mqtt.client.publish("device/config", data)
+            time.sleep(1)
+            return redirect('/device?serial=' + serial)
     return redirect('/')
+
+def set_log(msg):
+    mes = msg.payload.decode("utf-8")
+    mes = mes.split(';')
+    device = Device.objects.get(serial_number=mes[0])
+    device_log = DeviceLog.objects.create(device = device, message = mes[1])
+    device_log.save()
+    
+
+def set_config(msg):
+    mes = msg.payload.decode("utf-8")
+    ms = mes.split(';')
+    device = Device.objects.get(serial_number=ms[0])
+    device.config = mes
+    device.save()
 

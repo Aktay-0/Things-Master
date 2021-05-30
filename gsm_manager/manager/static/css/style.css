@@ -11,6 +11,57 @@
     flex-direction: column;
 }
 
+.profile-block {
+    margin-top: 20px;
+    margin-left: 40%;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+.register-device-block {
+    margin-top: 20px;
+    margin-left: 40%;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+.device-data-block {
+    margin-top: 20px;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+.device-config-block {
+    margin-top: 20px;
+    width: 20%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+    display: flex;
+    flex-direction: column;
+}
+
+
 a {
     text-decoration: none;
 }
@@ -65,23 +116,33 @@ body {
 }
 
 .login-btn {
-    margin-left: 16vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0); 
 }
 
 .dev-btn {
-    margin-left: 15vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0); 
 }
 
 .conf-btn {
-    margin-left: 10vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0); 
 }
 
 .reg-btn {
-    margin-left: 15vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0); 
 }
 
 .profile-btn {
-    margin-left: 15vh;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0); 
 }
 
 .device-box {
@@ -186,12 +247,122 @@ body {
     margin: 3px;
 }
 
+.profile-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.profile-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-block h1 {
+    text-align: center;
+}
+
+.profile-block p input {
+    margin: 3px;
+}
+
+.register-device-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.register-device-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-device-block h1 {
+    text-align: center;
+}
+
+.register-device-block p input {
+    margin: 3px;
+}
+
+.device-data-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.device-data-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.device-data-block h1 {
+    text-align: center;
+}
+
+.device-data-block p input {
+    margin: 3px;
+}
+
+.device-config-block button {
+    border-radius: 5px;
+    border-color: whitesmoke;
+}
+
+.device-config-block p {
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+}
+
+.device-config-block h1 {
+    text-align: center;
+}
+
+.device-config-block p input {
+    margin: 3px;
+}
+
 .block-device {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.block-device>* {
+    flex: 0 0 30%;
 }
 
 .block-device .login-block{
     margin-left: 0;
+}
+
+.log-block {
+    margin-top: 20px;
+    display: inline-block;
+    vertical-align: top; 
+    width: 30%;
+    border-color: grey;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 5px;
+    background: linear-gradient(lightslategray, whitesmoke,  lightslategray);
+}
+
+.log-block h1 {
+    text-align: center;
+}
+
+.message-block {
+    overflow-y: scroll;
+    width: 100%;
+    max-height: 80vh;
+    margin-top: 20px;
+    border-top-color: grey;
+    border-top: 3px;
+    border-top-style: solid;
+    border-radius: 5px;
+    background: whitesmoke;
 }

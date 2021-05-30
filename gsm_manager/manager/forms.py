@@ -33,7 +33,7 @@ class DeviceEditForm(forms.Form):
 class DeviceConfigForm(forms.Form):
     active = forms.BooleanField(label='Активность', required=False)
     alarmTime = forms.CharField(label='Время до срабатывания тревоги', required=True)
-    id = forms.CharField(label='Серийный номер', required=True)
+    #id = forms.CharField(label='Серийный номер', required=True)
     phone = forms.CharField(label='Телефон', required=True)
     smsText = forms.CharField(label='Текст SMS сообщения', required=True)
     name = forms.CharField(label='Название', required=True)

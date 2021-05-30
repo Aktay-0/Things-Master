@@ -122,6 +122,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+MQTT_HOST = '127.0.0.1'
+MQTT_PORT = 1883
+SEND_PHONE = ''
+SMSC_LOGIN = ''
+SMSC_PASSWORD = ''
+
 try:
     from .local_settings import *  # noqa
 except ImportError:

@@ -1,7 +1,7 @@
 {% extends 'manager/base.html' %}
 
 {% block content %}
-<div class="login-block">
+<div class="register-device-block">
     <h1>Регистрация устройства</h1>
     <form action="." method="POST" class="login-form">{% csrf_token %}
         {{ form.as_p }}
